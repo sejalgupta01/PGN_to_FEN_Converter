@@ -33,13 +33,13 @@ def not_blocked(from_sq, to_sq, board_view):
         between = [from_sq[0] + x for x in "12345678" if (int(from_sq[1]) < int(x) < int(to_sq[1]) or int(to_sq[1]) < int(x) < int(from_sq[1]))]
     elif from_sq[1] == to_sq[1]:
         between = [x + from_sq[1] for x in "abcdefgh" if (ord(from_sq[0]) < ord(x) < ord(to_sq[0]) or ord(to_sq[0]) < ord(x) < ord(from_sq[0]))]
-    elif ord(from_sq[0]) < ord(to_sq[1]) and int(from_sq[1]) < int(to_sq[1]):
+    elif ord(from_sq[0]) < ord(to_sq[0]) and int(from_sq[1]) < int(to_sq[1]):
         between = [chr(x) + str(y) for x, y in zip(range(ord(from_sq[0]) + 1, ord(to_sq[0])), range(int(from_sq[1]) + 1, int(to_sq[1])))]
-    elif ord(from_sq[0]) > ord(to_sq[1]) and int(from_sq[1]) < int(to_sq[1]):
+    elif ord(from_sq[0]) > ord(to_sq[0]) and int(from_sq[1]) < int(to_sq[1]):
         between = [chr(x) + str(y) for x, y in zip(range(ord(to_sq[0]) + 1, ord(from_sq[0])), range(int(to_sq[1]) - 1, int(from_sq[1]) - 2, -1))]
-    elif ord(from_sq[0]) < ord(to_sq[1]) and int(from_sq[1]) > int(to_sq[1]):
+    elif ord(from_sq[0]) < ord(to_sq[0]) and int(from_sq[1]) > int(to_sq[1]):
         between = [chr(x) + str(y) for x, y in zip(range(ord(to_sq[0]) - 1, ord(from_sq[0]) -2, -1), range(int(to_sq[1]) + 1, int(from_sq[1])))]
-    elif ord(from_sq[0]) > ord(to_sq[1]) and int(from_sq[1]) > int(to_sq[1]):
+    elif ord(from_sq[0]) > ord(to_sq[0]) and int(from_sq[1]) > int(to_sq[1]):
         between = [chr(x) + str(y) for x, y in zip(range(ord(to_sq[0]) + 1, ord(from_sq[0])), range(int(to_sq[1]) + 1, int(from_sq[1])))]
     for sq in between:
         if board_view[sq] != " ":
